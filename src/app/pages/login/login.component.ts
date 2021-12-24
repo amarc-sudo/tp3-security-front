@@ -36,26 +36,25 @@ export class LoginComponent implements OnInit {
           if (data['error']) {
             // @ts-ignore
             this.error = data['error'];
-          } else {
-            console.log(data)
-            // @ts-ignore
-            localStorage.setItem('token', data['token']);
-
-            // @ts-ignore
-            switch (data['role']['tagRole']) {
-              case 'admin':
-                this.router.navigate(['admin']);
-                break
-              case 'affaire':
-                this.router.navigate(['affaire']);
-                break
-              case 'residentiel':
-                this.router.navigate(['residentiel']);
-                break
+          } else { // @ts-ignore
+            if (data['token']) {
+              // @ts-ignore
+              localStorage.setItem('token', data['token']);
+              // @ts-ignore
+              switch (data['role']['tagRole']) {
+                case 'admin':
+                  this.router.navigate(['admin']);
+                  break
+                case 'affaire':
+                  this.router.navigate(['affaire']);
+                  break
+                case 'residentiel':
+                  this.router.navigate(['residentiel']);
+                  break
+              }
             }
           }
         }
-        //ici mettre le processus de connexion ou le decentraliser dans authService dans une autre methode
       })).subscribe();
     } else {
 
