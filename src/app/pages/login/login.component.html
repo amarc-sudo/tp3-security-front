@@ -1,12 +1,18 @@
-<form [formGroup]="profileForm" (ngSubmit)="connect()" #myForm="ngForm">
-  <mat-form-field   appearance="outline">
-    <mat-label>Email</mat-label>
+
+<div class="host">
+<form [formGroup]="profileForm" (ngSubmit)="connect()" #myForm="ngForm" class="example-form">
+
+  <mat-form-field appearance="fill" style="border-color: black">
+    <mat-label style="color: black">Email</mat-label>
     <input  formControlName="loginControl" matInput type="email" id="login" required/>
   </mat-form-field>
-  <mat-form-field appearance="outline">
-    <mat-label>Password</mat-label>
+
+  <mat-form-field appearance="fill">
+    <mat-label style="color: black">Password</mat-label>
     <input  formControlName="passwordControl" type="password" matInput id="password" required/>
   </mat-form-field>
-  <button>connect</button>
+
+  <button mat-raised-button>connect</button>
 </form>
+</div>
 

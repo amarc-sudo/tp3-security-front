@@ -1,1 +1,34 @@
-<p>admin works!</p>
+<div class="recap" *ngIf="list$ | async as securityDatum" style="width: 50%">
+
+  <table mat-table [dataSource]="securityDatum" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef> Id </th>
+      <td mat-cell *matCellDef="let element"> {{element?.id}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="tag">
+      <th mat-header-cell *matHeaderCellDef> Tag </th>
+      <td mat-cell *matCellDef="let element"> {{element?.tagSecurity}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="variables">
+      <th mat-header-cell *matHeaderCellDef> Variables </th>
+      <td mat-cell *matCellDef="let element"> {{element?.variable}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef> Status </th>
+      <td mat-cell *matCellDef="let element"> {{element?.status}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
+<button routerLink="/affaire">Affaire</button>
+<button routerLink="/residentiel">Residentiel</button>
+
+
